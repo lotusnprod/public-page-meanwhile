@@ -1,31 +1,57 @@
-name: github pages
+name: Build and Deploy
 
 on:
   push:
     branches:
-      - main  # Set a branch to deploy
+      - main
 
 jobs:
-  deploy:
+  build:
+
     runs-on: ubuntu-latest
+
     steps:
-      - uses: actions/checkout@v2
-        with:
-          submodules: true  # Fetch Hugo themes (true OR recursive)
-          fetch-depth: 1    # Fetch all history for .GitInfo and .Lastmod
+    - name: Checkout master
+      uses: actions/checkout@v1
+      with:
+        submodules: true
 
-      - name: Setup Hugo
-        uses: peaceiris/actions-hugo@v2
-        with:
-          hugo-version: 'latest'
-          extended: true
+    - name: Hugo Deploy GitHub Pages
+      uses: benmatselby/hugo-deploy-gh-pages@master
+      env:
+        HUGO_VERSION: 0.80.0
+        TARGET_REPO: oolonek/lotusnprod/public-page-meanwhile
+        TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        CNAME: lotus.nprod.net
 
-      - name: Build
-        run: hugo --minify
+# name: github pages
 
-      - name: Deploy
-        uses: peaceiris/actions-gh-pages@v3
-        with:
-          github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_dir: ./public
-          cname: bonus.nprod.net
+# on:
+#   push:
+#     branches:
+#       - main  # Set a branch to deploy
+
+# jobs:
+#   deploy:
+#     runs-on: ubuntu-latest
+#     steps:
+#       - uses: actions/checkout@v2
+#         with:
+#           submodules: true  # Fetch Hugo themes (true OR recursive)
+#           fetch-depth: 1    # Fetch all history for .GitInfo and .Lastmod
+
+#       - name: Setup Hugo
+#         uses: peaceiris/actions-hugo@v2
+#         with:
+#           hugo-version: 'latest'
+#           extended: true
+
+#       - name: Build
+#         run: hugo --minify
+
+#       - name: Deploy
+#         uses: peaceiris/actions-gh-pages@v3
+#         with:
+#           github_token: ${{ secrets.GITHUB_TOKEN }}
+#           publish_dir: ./public
+#           cname: bonus.nprod.net
