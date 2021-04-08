@@ -21,7 +21,7 @@ jobs:
       env:
         HUGO_VERSION: 0.69.1
         TARGET_REPO: oolonek/lotusnprod.github.io
-        TOKEN: ${{ secrets.TOKEN }}
+        TOKEN: ${{ secrets.GITHUB_TOKEN }}
         CNAME: lotus.nprod.net
         HUGO_ARGS: --debug
 
