@@ -19,11 +19,11 @@ jobs:
     - name: Hugo Deploy GitHub Pages
       uses: benmatselby/hugo-deploy-gh-pages@master
       env:
-        HUGO_VERSION: 0.69.1
+        HUGO_VERSION: 0.81.0
         TARGET_REPO: oolonek/lotusnprod.github.io
         TOKEN: ${{ secrets.GITHUB_TOKEN }}
         CNAME: lotus.nprod.net
-        HUGO_ARGS: --debug
+        HUGO_ARGS: '-t academic'
 
 
 # name: Build and Deploy
