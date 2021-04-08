@@ -20,7 +20,7 @@ jobs:
       uses: benmatselby/hugo-deploy-gh-pages@master
       env:
         HUGO_VERSION: 0.69.1
-        TARGET_REPO: jrwrigh/jrwrigh.github.io
+        TARGET_REPO: oolonek/lotusnprod.github.io
         TOKEN: ${{ secrets.TOKEN }}
-        CNAME: www.jameswright.xyz
+        CNAME: lotus.nprod.net
         HUGO_ARGS: --debug
