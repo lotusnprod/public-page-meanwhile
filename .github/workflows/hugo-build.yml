@@ -20,7 +20,7 @@ jobs:
       uses: benmatselby/hugo-deploy-gh-pages@master
       env:
         HUGO_VERSION: 0.80.0
-        TARGET_REPO: oolonek/lotusnprod/public-page-meanwhile
+        TARGET_REPO: oolonek/lotusnprod.github.io
         TARGET_BRANCH: main
         TOKEN: ${{ secrets.GITHUB_TOKEN }}
         CNAME: lotus.nprod.net
